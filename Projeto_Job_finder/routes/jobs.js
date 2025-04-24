@@ -3,6 +3,7 @@ const router = express.Router();
 const Job = require('../models/Job');
 const { Model } = require('sequelize');
 
+//rota de teste
 router.get('/test', (req, res) => {
     res.send('Está funcionando 2');
 });
