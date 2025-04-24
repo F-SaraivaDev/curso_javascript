@@ -1,0 +1,30 @@
+function imprimirNoConsole(){
+    console.log("Olá mundo")
+}
+
+imprimirNoConsole()
+
+function imprimirUmNumero(num){
+    console.log("O número é " + num)
+}
+
+imprimirUmNumero(45)
+
+const numeroAleatorio = function(){
+    console.log(Math.random())
+}
+
+numeroAleatorio()
+
+function podeDirigir(idade, cnh){
+    if(idade >= 18 && cnh == true){
+        console.log("Pode dirigir")
+    }else{
+        console.log("Não pode dirigir")
+    }
+}
+
+console.log(podeDirigir(25, true))
+console.log(podeDirigir(26,false))
+console.log(podeDirigir(44,0))
+console.log(podeDirigir(50,1))
