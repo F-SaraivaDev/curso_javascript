@@ -8,14 +8,30 @@ router.get('/test', (req, res) => {
     res.send('Está funcionando 2');
 });
 
-router.get('/add', (req, res)=>{
+//datalhe da vaga
+router.get('/view/:id', (req, res) => {
+    Job.findOne({
+      where: { id: req.params.id }
+    })
+    .then(job => {
+      res.render('view', { job });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Erro ao carregar a vaga');
+    });
+  });
+
+
+//form da rota de envio
+router.get('/add', (req, res) => {
     res.render('add');
 });
 
 //add job via post
 router.post('/add', (req, res) => {
-    
-    let {title, salary, company, description, email, new_job} = req.body;
+
+    let { title, salary, company, description, email, new_job } = req.body;
 
     //insert
     Job.create({
