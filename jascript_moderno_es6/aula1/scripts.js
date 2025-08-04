@@ -82,14 +82,14 @@ console.log(availableUsers)
 console.log("---------------- Map ----------------")
 
 const products = [
-    {name: 'camisa', price: 10.99, category: 'roupas'},
-    {name: 'cafeteira', price: 49.99, category: 'eletro'},
-    {name: 'microondas', price: 400.99, category: 'eletro'},
-    {name: 'calça', price: 50.99, category: 'roupas'},
+    { name: 'camisa', price: 10.99, category: 'roupas' },
+    { name: 'cafeteira', price: 49.99, category: 'eletro' },
+    { name: 'microondas', price: 400.99, category: 'eletro' },
+    { name: 'calça', price: 50.99, category: 'roupas' },
 ]
 
 products.map((product) => {
-    if(product.category === 'roupas'){
+    if (product.category === 'roupas') {
         product.emPromocao = true
     }
 })
@@ -123,8 +123,99 @@ const produtoDetalhes = {
     category: "Microcomputadores"
 }
 
-const {nome: nomeProduto, preco, category: produtoCategory, modelo} = produtoDetalhes
+const { nome: nomeProduto, preco, category: produtoCategory, modelo } = produtoDetalhes
 
 console.log(`O nome do produto é ${nomeProduto}, custa R$ ${preco}`)
-    
+
+// 6 Spread operator
+
+const a1 = [1, 2, 3]
+const a2 = [4, 5, 6]
+
+const a3 = [...a1, ...a2]
+
+console.log(a3)
+
+const a4 = [0, ...a1, 4]
+
+console.log(a4)
+
+const modeloCarro = { nome: "Palio" }
+const marca = { marca: "Fiat" }
+const outrasInformacoes = { km: 100000, preco: 80.000, ano: 2020 }
+
+const carro = { ...modeloCarro, ...marca, ...outrasInformacoes }
+
+console.log(carro)
+
+// 8 classe
+
+class Produto {
+    constructor(nome, preco) {
+        this.nome = nome
+        this.preco = preco
+    }
+
+    produtoDesconto(desconto) {
+        return this.preco * ((100 - desconto) / 100)
+    }
+}
+
+const camisa = new Produto("Camisa Verde", 20.00)
+
+console.log(camisa.nome)
+console.log(camisa.produtoDesconto(10))
+
+const tenis = new Produto("Olympikus", 120)
+console.log(tenis.produtoDesconto(10))
+
+// 9 heranca
+class ProdutoComAtributos extends Produto {
+    constructor(nome, preco, cores) {
+        super(nome, preco)
+        this.cores = cores
+    }
+
+    showCores() {
+        console.log("As cores são:")
+        this.cores.forEach((cor) => {
+            console.log(cor)
+        })
+    }
+}
+
+const chapeu = new ProdutoComAtributos("Chapéu", 29.99, [
+    "Preto", 
+    "Azul", 
+    "Verde"
+])
+
+console.log(chapeu.nome)
+console.log(chapeu.produtoDesconto(30))
+chapeu.showCores()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
